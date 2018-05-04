@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct 18 17:11:02 2017
+
+@author: longjiemin
+"""
+
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        solution_set=[]
+        start = 0
+        end = len(nums)-1
+        def sol():
+            global start
+            global end
+            global solution_set
+            for i in range(3):
+                for j in range(start+1,end):
+                    if nums[start]+nums[j]+nums[end] == 0:
+                        solution_set.append({nums[start],nums[j],nums[end]})   
+                if i==0:
+                    start += 1
+                elif i==1:
+                    start -= 1
+                    end += 1
+                elif i==2:
+                    start += 1
+        while start != end:
+            sol()
+        
+        return 
+            
+s=Solution()
