@@ -12,17 +12,17 @@ Created on Sat Apr 28 14:10:34 2018
 #经验：注意第一行和第一列的初始化，第一列应该全部为0.
 import numpy as np
 def max_coin_num(arr,aim):
-    dp = np.random.rand(len(arr),aim+1)
+    dp = np.random.rand(len(arr),aim+1) #生成dp表
     dp[:] = 0
-    dp[:,0] = 1
+    dp[:,0] = 1                         #初始化第一行和第一列，细节要点，第一列为0
     for i in range(aim+1):
-        dp[0,i] = 1 if i%arr[0] == 0 else 0  
-    for i in range(1,len(arr)):
+        dp[0,i] = 1 if i%arr[0] == 0 else 0
+    for i in range(1,len(arr)):         #递归更新dp表
         for j in range(1,aim+1):
             n = 0
             while j-n*arr[i] >= 0:
                 dp[i,j] += dp[i-1,j-n*arr[i]]
                 n += 1
             #print(dp)
-                
+
     return dp[len(arr)-1,aim]

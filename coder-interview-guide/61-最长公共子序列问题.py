@@ -11,6 +11,7 @@ Created on Sat Apr 28 14:56:11 2018
 
 import numpy as np
 
+#dp[i,j]代表str[:i],str[:j]的最大子序列的长度
 def get_dp(str1,str2):
 	dp = np.random.randn(len(str1,str2))
 	dp[:,:]=0
@@ -22,15 +23,16 @@ def get_dp(str1,str2):
 			dp[i][j] = max(dp[i-1][j],dp[i][j-1],value)
 	return dp
 
+#从dp表的右下角往左上角移动，寻找最大子序列
 def dp_to_sep(dp,arr):
 	i = len(str1),j = len(str2)
 	index_list =[]
 	while i>0 and j > 0:
-		if dp[i][j] = dp[i][j-1]:
+		if dp[i][j] = dp[i][j-1]: #往上移动
 			j -= 1
-		elif dp[i][j] == dp[i-1][j]:
+		elif dp[i][j] == dp[i-1][j]: #往左移动
 			i -= 1
-		else dp[i][j] == dp[i-1][j-1]+1:
+		else dp[i][j] == dp[i-1][j-1]+1: #往左上角移动并记录值
 			index_list.append(i)
 			i -= 1
 			j-=1
@@ -38,4 +40,3 @@ def dp_to_sep(dp,arr):
 		index_list.append(i)
 	index_list.reverse()
 	return index_list
-

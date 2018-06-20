@@ -9,7 +9,7 @@ Created on Sat Apr 28 10:51:54 2018
 @author: longjiemin
 """
 import numpy as np
-        
+
 def min_coin_num(arr,aim):
     dp = np.random.rand(len(arr),aim+1)
     dp[:] = 0
@@ -31,19 +31,20 @@ def min_coin_num(arr,aim):
                     dp[i,j] = dp[i-1,j-n*arr[i]]+n
                 n += 1
             #print(dp)
-                
-    return dp[len(arr)-1,aim]
-    
 
+    return dp[len(arr)-1,aim]
+
+
+#进阶问题的解法
 def min_coin_num2(arr,aim):
-    dp = np.random.rand(len(arr),aim+1)
+    dp = np.random.rand(len(arr),aim+1) #生成随机dp表
     dp[:] = 0
     dp[:,0] = 0
     for i in range(aim+1):
         if i%arr[0] == 0:
             dp[0,i] = i/arr[0]
         else:
-            dp[0,i] = 10000
+            dp[0,i] = 10000   #否则取一个极大值
     for i in range(1,len(arr)):
         for j in range(1,aim+1):
             if j%arr[i]==0:
@@ -54,6 +55,5 @@ def min_coin_num2(arr,aim):
                 if dp[i,j] > dp[i-1,j-arr[i]]+1:
                     dp[i,j] = dp[i-1,j-arr[i]]+1
             #print(dp)
-                
+
     return dp[len(arr)-1,aim]
-               
