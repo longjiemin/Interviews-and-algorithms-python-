@@ -36,3 +36,9 @@ def get_N3(n):
     for i in range(n-2):
         b,a = a+b,b
     return b
+
+    #4
+#猫狗队列
+
+
+ 
