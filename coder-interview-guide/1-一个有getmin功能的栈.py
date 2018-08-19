@@ -18,7 +18,7 @@ class getmin_stack():
 #            self.stack_data = self.push(i)       
             
     def push(self,elem):
-        if self.stack_data is not []:
+        if len(self.stack_data) ==0: #谨慎使用is
             self.stack_data.append(elem)
             self.stack_min.append(elem)
         elif elem <= self.stack_data[-1]:

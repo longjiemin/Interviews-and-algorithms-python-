@@ -18,6 +18,8 @@ def reverseList(head):
         #1,4互相循环，head = head.next,不断迭代
         #2,3互相循环，new pre = old pre
     return pre
+#测试已经通过
+    
 
 class DoubleNode():
     def __init__(self,data):
