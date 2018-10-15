@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+   # -*- coding: utf-8 -*-
 """
 Created on Fri May  4 15:35:18 2018
 
@@ -23,8 +23,8 @@ def get_test_data():
     head.left.left = node(4)
     head.left.right = node(5)
     head.right = node(3)
-    head.right.right = node(6)
-    head.right.left = node(7)
+    head.right.left = node(6)
+    head.right.right = node(7)
     return head
     
 #使用递归的方法进行,如下分别是先序，中序，后序
@@ -78,12 +78,38 @@ def in_order_unrecur(head):
             stack.append(cur)
             cur = cur.left
         else:
-            node_ = stack.pop()
-            print (node_.value)
-            cur = node_.right
-        
+            temp_node = stack.pop()
+            print (temp_node.value)
+            cur = temp_node.right
+            
+#后序遍历有点麻烦
+def posOrder_unrecur(head):
+    if head is None:
+        return
+    cur = head
+    stack1= [];stack2=[]
+    stack1.append(cur)
+    while len(stack1)>0:
+        temp_node = stack1.pop()
+        stack2.append(temp_node)
+        if temp_node.left is not None:
+            stack1.append(temp_node.left)
+        if temp_node.right is not None:
+            stack2.append(temp_node.right)
+    while stack2:
+        print(stack2.pop().value)
 
-
+if __name__ == '__main__':
+    print('\n')
+    data = get_test_data()
+    pre_order_recur(data)
+    in_order_recur(data)
+    print('\n')
+    pos_order_recur(data)
+    pre_order_unrecur(data)
+    in_order_unrecur(data)
+    posOrder_unrecur(data)
+    
 
 
 

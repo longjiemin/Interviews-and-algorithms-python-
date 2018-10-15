@@ -6,7 +6,7 @@ Created on Fri May  4 17:36:41 2018
 """
 #去掉字符串中连续出现的k个0的子串
 #难度：1星
-#思路：设置空字符串res，设置变量count对0计数
+#思路：设置空字符串res，设置变量count对0计数，java版本可以不占用额外空间，直接从原则字符串中去除不需要的字符
 def removekzeros(str1,k):
     res = ''
     count = 0

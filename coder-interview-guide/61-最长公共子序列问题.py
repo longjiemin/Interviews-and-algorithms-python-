@@ -13,10 +13,10 @@ import numpy as np
 
 #dp[i,j]代表str[:i],str[:j]的最大子序列的长度
 def get_dp(str1,str2):
-	dp = np.random.randn(len(str1,str2))
+	dp = np.random.randn(len(str1),len(str2))
 	dp[:,:]=0
-	dp[:,0] = [0 for i in range(1,len(str2)+1) if str1[0] in str2[:i] else 0]
-	dp[0,:] = [0 for i in range(1,len(str1)+1) if str1[0] in str1[:i] else 0]
+	dp[:,0] = [0 if str1[0] in str2[:i] else 0 for i in range(1,len(str2)+1)]
+	dp[0,:] = [0 if str1[0] in str1[:i] else 0 for i in range(1,len(str1)+1)]
 	for i in range(1,len(str1)):
 		for j in range(1,len(str2)):
 			value = dp[i-1][j-1]+1 if str[i]== str[j] else dp[i-1][j-1]
@@ -25,14 +25,14 @@ def get_dp(str1,str2):
 
 #从dp表的右下角往左上角移动，寻找最大子序列
 def dp_to_sep(dp,arr):
-	i = len(str1),j = len(str2)
+	i = len(str1);j = len(str2)
 	index_list =[]
 	while i>0 and j > 0:
-		if dp[i][j] = dp[i][j-1]: #往上移动
+		if dp[i][j] == dp[i][j-1]: #往上移动
 			j -= 1
 		elif dp[i][j] == dp[i-1][j]: #往左移动
 			i -= 1
-		else dp[i][j] == dp[i-1][j-1]+1: #往左上角移动并记录值
+		elif dp[i][j] == dp[i-1][j-1]+1: #往左上角移动并记录值
 			index_list.append(i)
 			i -= 1
 			j-=1
